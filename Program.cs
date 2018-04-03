@@ -131,7 +131,7 @@ namespace FizzBuzz
 
         public static string SetUserRules()
         {
-            Console.WriteLine("Please type which rules (3, 5, 7, 11, 17) you wish to enter seperated by a comma");
+            Console.WriteLine("Please type which rules (3, 5, 7, 11, 13, 17) you wish to enter seperated by a comma");
             string rulesToBeApplied = Console.ReadLine();
             return rulesToBeApplied;
         }
