@@ -8,30 +8,59 @@ namespace FizzBuzz
 {
     class Program
     {
+        static bool isNumber;
         static void Main(string[] args)
         {
+
             Console.WriteLine("Enter a number to increment up to: ");
             int count = int.Parse(Console.ReadLine());
 
-            List<string> ls = new List<string>();
+            Console.WriteLine("Please type which rules you wish to enter");
+            string rulesToBeApplied = Console.ReadLine();
+        
+                for (int i = 1; i <= count; i++)
+                {
+                    List<string> ls = new List<string>();
+                    isNumber = true;
 
-            for (int i = 1; i <= count; i++)
-            {
-                bool isNumber = true;
-
-                ls = MultipleOf3(i, ls, isNumber);
-                ls = MultipleOf5(i, ls, isNumber);
-                ls = MultipleOf7(i, ls, isNumber);
-                ls = MultipleOf11(i, ls, isNumber);
-                ls = MultipleOf13(i, ls, isNumber);
-                ls = MultipleOf17(i, ls, isNumber);
-                Console.WriteLine(String.Join(",", ls));
-                Console.WriteLine(i);
-            }
+                if (rulesToBeApplied.Contains("3"))
+                {
+                    ls = MultipleOf3(i, ls);
+                }
+                if (rulesToBeApplied.Contains("5"))
+                {
+                    ls = MultipleOf5(i, ls);
+                }
+                if (rulesToBeApplied.Contains("7"))
+                {
+                    ls = MultipleOf7(i, ls);
+                }
+                if (rulesToBeApplied.Contains("11"))
+                {
+                    ls = MultipleOf11(i, ls);
+                }
+                if (rulesToBeApplied.Contains("13"))
+                {
+                    ls = MultipleOf13(i, ls);
+                }
+                if (rulesToBeApplied.Contains("17"))
+                {
+                    ls = MultipleOf17(i, ls);
+                }
+           
+                if (isNumber)
+                    {
+                        Console.WriteLine(i);
+                    }
+                    else
+                    {
+                        Console.WriteLine(String.Join("", ls));
+                    }
+                }
             Console.ReadLine();
         }
 
-        public static List<string> MultipleOf3(int i, List<string>ls, bool isNumber)
+        public static List<string> MultipleOf3(int i, List<string>ls)
         {
             if (i % 3 == 0)
             {
@@ -41,18 +70,17 @@ namespace FizzBuzz
             return ls;
         }
 
-        public static List<string> MultipleOf7(int i, List<string>ls, bool isNumber)
+        public static List<string> MultipleOf7(int i, List<string>ls)
         {
             if (i % 7 == 0)
             {
                 isNumber = false;
                 ls.Add("Bang");
             }
-            isNumber = false;
             return ls;
         }
 
-        public static List<string> MultipleOf13(int i, List<string>ls, bool isNumber)
+        public static List<string> MultipleOf13(int i, List<string>ls)
         {
             if (i % 13 == 0)
             {
@@ -62,7 +90,7 @@ namespace FizzBuzz
             return ls;
         }
 
-        public static List<string> MultipleOf5(int i, List<string>ls, bool isNumber)
+        public static List<string> MultipleOf5(int i, List<string>ls)
         {
             if (i % 5 == 0)
             {
@@ -72,7 +100,7 @@ namespace FizzBuzz
             return ls;
         }
 
-        public static List<string> MultipleOf11(int i, List<string> ls, bool isNumber)
+        public static List<string> MultipleOf11(int i, List<string> ls)
         {
             if (i % 11 == 0)
             {
@@ -82,11 +110,10 @@ namespace FizzBuzz
             return ls;
         }
 
-        public static List<string> MultipleOf17(int i, List<string>ls, bool isNumber)
+        public static List<string> MultipleOf17(int i, List<string>ls)
         {
             if (i % 17 == 0)
             {
-                isNumber = false;
                 ls.Reverse();
             }
             return ls;
