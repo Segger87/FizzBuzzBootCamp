@@ -11,14 +11,12 @@ namespace FizzBuzz
         static bool isNumber;
         static void Main(string[] args)
         {
+            int count = IncrementNumbers();
 
-            Console.WriteLine("Enter a number to increment up to: ");
-            int count = int.Parse(Console.ReadLine());
+            string rulesToBeApplied = SetUserRules();
+         
 
-            Console.WriteLine("Please type which rules you wish to enter");
-            string rulesToBeApplied = Console.ReadLine();
-        
-                for (int i = 1; i <= count; i++)
+            for (int i = 1; i <= count; i++)
                 {
                     List<string> ls = new List<string>();
                     isNumber = true;
@@ -117,6 +115,25 @@ namespace FizzBuzz
                 ls.Reverse();
             }
             return ls;
+        }
+
+        public static int IncrementNumbers()
+        {
+            int count = 0;
+            do
+            {
+                Console.WriteLine("Enter a number to increment up to: ");
+            }
+            while (!int.TryParse(Console.ReadLine(), out count));
+            
+            return count;
+        }
+
+        public static string SetUserRules()
+        {
+            Console.WriteLine("Please type which rules (3, 5, 7, 11, 17) you wish to enter seperated by a comma");
+            string rulesToBeApplied = Console.ReadLine();
+            return rulesToBeApplied;
         }
     }
 }
